@@ -19,3 +19,16 @@ background: #1a1a1a;
         </div>
       </span>
     </div>
+    <script>    const stripeDropLink = document.getElementById('stripeDropLink');
+      const stripeDropdown = document.getElementById('stripeDropdown');
+  
+      stripeDropLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        stripeDropdown.style.display = (stripeDropdown.style.display === 'block') ? 'none' : 'block';
+      });
+  
+      document.addEventListener('click', function(event) {
+        if (!stripeDropLink.contains(event.target) && !stripeDropdown.contains(event.target)) {
+          stripeDropdown.style.display = 'none';
+        }
+      });</script>
