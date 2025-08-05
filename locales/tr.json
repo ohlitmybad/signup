@@ -1,0 +1,9 @@
+{
+  "stripe": {
+      "trouble": "Ödeme ile Sorun mu Yaşıyorsunuz?",
+      "subscribe": "Stripe ile Abone Ol",
+      "monthly": "Aylık (€9.99)",
+      "6months": "6 Ay (€54.99)",
+      "yearly": "1 Yıl (€104.99)"
+    }
+} 
