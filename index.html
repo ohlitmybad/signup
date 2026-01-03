@@ -5,28 +5,134 @@
 }
  body {
 background: #1a1a1a;
+font-family: Arial, sans-serif;
+}
+
+/* Stripe and Gift options styling */
+#stripeOption {
+  display: block;
+  max-width: 900px;
+  margin: 20px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.payment-options-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stripe-section, .gift-section {
+  position: relative;
+  font-size: 13px;
+  color: #999;
+  display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.gift-section {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gift-section::before {
+  content: "•";
+  color: #666;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.stripe-section a, .gift-section a {
+  color: #0099dd;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+  font-size: 13px;
+}
+
+.stripe-section a:hover, .gift-section a:hover {
+  color: #0088cc;
+}
+
+#stripeDropdown, #giftDropdown {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+  margin-bottom: 10px;
+  background: #2a2a2a;
+  border: 1px solid #00aaee;
+  border-radius: 8px;
+  min-width: 240px;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+#stripeDropdown a, #giftDropdown a {
+  display: block;
+  padding: 12px 20px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  transition: background 0.2s ease;
+}
+
+#stripeDropdown a:first-child, #giftDropdown a:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+#stripeDropdown a:last-child, #giftDropdown a:last-child {
+  border-bottom: none;
+  border-radius: 0 0 8px 8px;
+}
+
+#stripeDropdown a:hover, #giftDropdown a:hover {
+  background: #3a3a3a;
+}
+
+@media (max-width: 767px) {
+  .payment-options-wrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .gift-section::before {
+    display: none;
+  }
+  
+  #stripeDropdown, #giftDropdown {
+    min-width: 200px;
+  }
 }
 </style>
 <div id="SFctr" class="SF" data-org="31002" data-ini="join" data-lvl="64c215764c0b6076026762a3" data-scl="0" data-sfi="1"></div><script type="text/javascript" src="https://cdn.membershipworks.com/mfm.js"></script>
-<div id="stripeOption" style="display:block; max-width: 600px; text-align: left; font-family: Arial, Helvetica, sans-serif;">
-      <span style="font-size: 14px; color: #b0e0ff; position: relative; margin-left: 5px;">
-        <span data-i18n="stripe.trouble">Trouble with Payment?</span> 
-        <a href="#" id="stripeDropLink" style="color: #00aaff; text-decoration: underline;" data-i18n="stripe.subscribe">Subscribe via Stripe</a>
-        <div id="stripeDropdown" style="display:none; position:absolute; left:100px; bottom:28px; background:#232323; border:1px solid #00aaff; border-radius:0px; min-width:220px; z-index:1000; box-shadow: 0 4px 16px rgba(0,0,0,0.18);">
-          <a href="https://buy.stripe.com/fZubJ1c3h9IXaBxgYhcbC0a" style="display:block; padding:10px 18px; color:#fff; text-decoration:none; border-bottom:1px solid #222;" data-i18n="stripe.monthly">Monthly (€9.99)</a>
-          <a href="https://buy.stripe.com/00weVdebpaN1aBx8rLcbC09" style="display:block; padding:10px 18px; color:#fff; text-decoration:none; border-bottom:1px solid #222;" data-i18n="stripe.6months">6 Months (€54.99)</a>
-          <a href="https://buy.stripe.com/5kQ5kDebpf3h7pl23ncbC08" style="display:block; padding:10px 18px; color:#fff; text-decoration:none;" data-i18n="stripe.yearly">1 Year (€104.99)</a>
+<div id="stripeOption">
+    <div class="payment-options-wrapper">
+      <div class="stripe-section">
+        <span data-i18n="stripe.trouble">Trouble with payment?</span> 
+        <a href="#" id="stripeDropLink" data-i18n="stripe.subscribe">Subscribe via Stripe</a>
+        <div id="stripeDropdown">
+          <a href="https://buy.stripe.com/fZubJ1c3h9IXaBxgYhcbC0a" data-i18n="stripe.monthly">Monthly (€9.99)</a>
+          <a href="https://buy.stripe.com/00weVdebpaN1aBx8rLcbC09" data-i18n="stripe.6months">6 Months (€54.99)</a>
+          <a href="https://buy.stripe.com/5kQ5kDebpf3h7pl23ncbC08" data-i18n="stripe.yearly">1 Year (€104.99)</a>
         </div>
-      </span>
+      </div>
     </div>
+  </div>
     <script>    const stripeDropLink = document.getElementById('stripeDropLink');
       const stripeDropdown = document.getElementById('stripeDropdown');
-  
+
       stripeDropLink.addEventListener('click', function(e) {
         e.preventDefault();
         stripeDropdown.style.display = (stripeDropdown.style.display === 'block') ? 'none' : 'block';
       });
-  
+
       document.addEventListener('click', function(event) {
         if (!stripeDropLink.contains(event.target) && !stripeDropdown.contains(event.target)) {
           stripeDropdown.style.display = 'none';
