@@ -1,0 +1,9 @@
+{
+  "stripe": {
+    "trouble": "Masalah pembayaran?",
+    "subscribe": "Berlangganan melalui Stripe",
+    "monthly": "Bulanan (€9,99)",
+    "6months": "6 Bulan (€54,99)",
+    "yearly": "1 Tahun (€104,99)"
+  }
+}

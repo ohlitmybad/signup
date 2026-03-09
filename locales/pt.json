@@ -1,0 +1,9 @@
+{
+  "stripe": {
+    "trouble": "Problemas com o pagamento?",
+    "subscribe": "Subscrever via Stripe",
+    "monthly": "Mensal (€9,99)",
+    "6months": "6 Meses (€54,99)",
+    "yearly": "1 Ano (€104,99)"
+  }
+}
